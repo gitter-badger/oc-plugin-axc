@@ -1,4 +1,3 @@
-oc-plugin-axc
-=============
+# oc-plugin-axc
 
-AxC (http://www.alexcarrega.com) Plugin for OctoberCMS
+> AxC (http://www.alexcarrega.com) Plugin for OctoberCMS.
