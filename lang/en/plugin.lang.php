@@ -10,5 +10,5 @@
  * @var array
  */
 $plugin_lang = [
-	'description' => 'Provides custom functionalities for Seldac'
+	'description' => 'Provides custom functionalities for AxC'
 ];

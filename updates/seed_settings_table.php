@@ -3,18 +3,24 @@
 /**
  * @author Alex Carrega <contact@alexcarrega.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
- * @package AxC\Seldac\Updates
+ * @package AxC\AxC\Updates
  */
 
-namespace AxC\Seldac\Updates;
+namespace AxC\AxC\Updates;
 
-use Seeder;
-use AxC\Seldac\Models\Settings;
+use AxC\AxC\Models\Settings;
+use AxC\AddThis\Models\Settings as AddThisSettings;
+use AxC\Segment\Models\Settings as SegmentSettings;
+use AxC\reCAPTCHA\Models\Settings as reCAPTCHASettings;
+use RainLab\GoogleAnalytics\Models\Settings as GoogleAnalyticsSettings;
+use System\Models\MailSettings;
+use AnandPatel\SeoExtension\models\Settings as SeoExtensionSettings;
+use Backend\Models\BrandSettings;
 
 /**
- * Add data to Seldac Settings DB scheme.
+ * Add data to AxC Settings DB scheme.
  */
-class SeedSettingsTable extends Seeder
+class SeedSettingsTable extends \Seeder
 {
 	/**
 	 * Add data to DB scheme
@@ -22,39 +28,72 @@ class SeedSettingsTable extends Seeder
 	 */
 	public function run()
 	{
-		Settings::set('name', 'Seldac');
-		Settings::set('full_name', 'Seldac Servizi S.r.L.');
-		Settings::set('slogan',
-			'The answer to the administrative needs of all companies, small and medium-sized businesses, professionals and associations.');
-		Settings::set('about', implode("\n", [
-			'provides high-level advice to companies, accompanying step by step their customers in the intricate field of taxation.',
-			'The service of electronic data processing accounting allows to fulfill all the formalities required by law.',
-			'Our customer can resolve the related tasks because the service is managed by experienced staff',
-			'through the use of one of the most advanced management software as ZUCCHETTI.'
-		] ) );
+		Settings::set('name', 'AxC');
+		Settings::set('full_name', 'Alex (eXperience) Carrega');
+		Settings::set('slogan', 'Advance - eXperience - Connection');
+		Settings::set('about', 'TODO');
 
-		Settings::set('address_street_name', 'via Felice Cavallotti');
-		Settings::set('address_street_number', '128');
-		Settings::set('address_street_int', '3');
-		Settings::set('address_zip', '15067');
-		Settings::set('address_city', 'Novi Ligure');
+		Settings::set('address_street_name', 'via Giulia');
+		Settings::set('address_street_number', '2');
+		Settings::set('address_street_int', '5');
+		Settings::set('address_zip', '15060');
+		Settings::set('address_city', 'Stazzano');
 		Settings::set('address_province', 'AL');
 		Settings::set('address_country', 'IT');
 
-		Settings::set('vat', Settings::get('vat', '02254830066') );
-		Settings::set('rui_section', Settings::get('rui_section', 'E') );
-		Settings::set('rui_number', Settings::get('rui_number', 'E000147232') );
-		Settings::set('rui_date', Settings::get('rui_date', '10/04/2007') );
+		AddThisSettings::set('pubid', 'ra-5481b82b1ff99f90');
 
-		Settings::set('mc_address_street_name', 'via Felice Cavallotti');
-		Settings::set('mc_address_street_number', '128');
-		Settings::set('mc_address_street_int', '5');
-		Settings::set('mc_address_zip', '15067');
-		Settings::set('mc_address_city', 'Novi Ligure');
-		Settings::set('mc_address_province', 'AL');
-		Settings::set('mc_address_country', 'IT');
+		SegmentSettings::set('write_key', 'ar48yc8hbv');
 
-		Settings::set('mc_nin', 'CSRMRC64P02D612A');
-		Settings::set('mc_vat', '05110830485');
+		$ga_settings = GoogleAnalyticsSettings::instance();
+		$ga_settings->project_name = 'alexcarrega-com';
+		$ga_settings->client_id = '716962334615-glbe8kco29bqv9rhhphrd4ut7qket793.apps.googleusercontent.com';
+		$ga_settings->app_email =  '716962334615-glbe8kco29bqv9rhhphrd4ut7qket793@developer.gserviceaccount.com';
+		$ga_settings->profile_id = '70185283';
+		$ga_settings->tracking_id = 'UA-39297686-1';
+		$ga_settings->domain_name = 'axc';
+		$ga_settings->save();
+
+		$mail_settings = MailSettings::instance();
+		$mail_settings->send_mode = 'smtp';
+		$mail_settings->sender_name = 'Alex Carrega (AxC)';
+		$mail_settings->sender_email = 'contact@alexcarrega.com';
+		$mail_settings->smtp_address ='smtp.gmail.com';
+		$mail_settings->smtp_port = '587';
+		$mail_settings->smtp_user = 'contact@alexcarrega.com';
+		$mail_settings->smtp_password = 'p3p3r1n0';
+		$mail_settings->smtp_authorization = '1';
+		$mail_settings->smtp_ssl = '1';
+		// @todo: tls?
+		$mail_settings->save();
+
+		$seo_extension_settings = SeoExtensionSettings::instance();
+		$seo_extension_settings->enable_title = '1';
+		$seo_extension_settings->enable_canonical_url = '1';
+		$seo_extension_settings->title = '| AxC';
+		$seo_extension_settings->title_position = 'suffix';
+		$seo_extension_settings->other_tags = "<meta name=\"author\" content=\"Alex Carrega (AxC - http:\/\/www.alexcarrega.com)\">\r\n<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" \/>\r\n<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" \/>\r\n<meta name=\"description\" content=\"Contact page\" \/>\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
+		$seo_extension_settings->save();
+
+		$brand_settings = BrandSettings::instance();
+		$brand_settings->app_name = 'AxC';
+		$brand_settings->app_tagline = 'Alex Carrega (AxC)';
+		$brand_settings->primary_color_light = '#5bc0de';
+		$brand_settings->primary_color_dark = '#4472C4';
+		$brand_settings->secondary_color_light = '#f0ad4e';
+		$brand_settings->secondary_color_dark = '#C00000';
+		$brand_settings->save();
+
+		$recaptcha_settings = reCAPTCHASettings::instance();
+		$recaptcha_settings->public_key = '6LeZAvASAAAAAMdffcqD_spxmsLmqUGANP8d64ZG';
+		$recaptcha_settings->private_key = '6LeZAvASAAAAAIrgZjwFrAXP9UruZylHqdUlc57N';
+		$recaptcha_settings->save();
+
+		// @p-color: #4472C4;
+		// @s-color: #70AD47;
+		// @bg-color: #FFFFFF;
+		// @i-color: #5bc0de;
+		// @w-color: #f0ad4e;
+		// @d-color: #C00000;
 	}
 }

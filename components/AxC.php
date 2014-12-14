@@ -1,19 +1,19 @@
-<?
+			<?
 
 /**
  * @author Alex Carrega <contact@alexcarrega.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
- * @package \AxC\DataManagement\Components
+ * @package \AxC\AxC\Components
  */
 
-namespace AxC\Seldac\Components;
+namespace AxC\AxC\Components;
 
-use AxC\Seldac\Models\Settings as SettingsModel;
+use AxC\AxC\Models\Settings as SettingsModel;
 
 /**
- * Seldac component class
+ * AxC component class
  */
-class Seldac extends \Cms\Classes\ComponentBase
+class AxC extends \Cms\Classes\ComponentBase
 {
 	/**
 	 * Return the component details.
@@ -22,8 +22,8 @@ class Seldac extends \Cms\Classes\ComponentBase
 	public function componentDetails()
 	{
 		return [
-			'name'				=> trans('axc.seldac::lang.component.name'),
-			'description'	=> trans('axc.seldac::lang.component.description')
+			'name'				=> trans('axc.axc::lang.component.name'),
+			'description'	=> trans('axc.axc::lang.component.description')
 		];
 	}
 

@@ -3,13 +3,13 @@
 /**
  * @author Alex Carrega <contact@alexcarrega.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
- * @package \AxC\Seldac\Models
+ * @package \AxC\AxC\Models
  */
 
-namespace AxC\Seldac\Models;
+namespace AxC\AxC\Models;
 
 /**
- * Seldac Settings model
+ * AxC Settings model
  */
 class Settings extends \AxC\Framework\Models\Settings
 {
@@ -17,7 +17,7 @@ class Settings extends \AxC\Framework\Models\Settings
 	 * A unique code.
 	 * @param string
 	 */
-	public $settingsCode = 'axc_seldac_settings';
+	public $settingsCode = 'axc_axc_settings';
 
 	/**
 	 * Update the settings fields of other models if the settings of this one is updated.

@@ -17,17 +17,17 @@ App::before(function($request)
 		if ($form->model instanceof \Backend\Models\BrandSettings)
 		{
 			$form->config->tabs['fields']['app_name']['commentAbove'] =
-				trans( $form->config->tabs['fields']['app_name']['commentAbove'] ) .' '. trans('axc.seldac::lang.settings.brand.app_name.commentAbove');
+				trans( $form->config->tabs['fields']['app_name']['commentAbove'] ) .' '. trans('axc.axc::lang.settings.brand.app_name.commentAbove');
 			$form->config->tabs['fields']['app_name']['attributes']['readonly'] = 'readonly';
 
 			$form->config->tabs['fields']['app_tagline']['commentAbove'] =
-				trans( $form->config->tabs['fields']['app_tagline']['commentAbove'] ) .' '. trans('axc.seldac::lang.settings.brand.app_tagline.commentAbove');
+				trans( $form->config->tabs['fields']['app_tagline']['commentAbove'] ) .' '. trans('axc.axc::lang.settings.brand.app_tagline.commentAbove');
 			$form->config->tabs['fields']['app_tagline']['attributes']['readonly'] = 'readonly';
 		}
 		elseif ( class_exists('\AnandPatel\SeoExtension\models\Settings') and $form->model instanceof \AnandPatel\SeoExtension\models\Settings)
 		{
 			$form->config->tabs['fields']['title']['comment'] =
-				trans( $form->config->tabs['fields']['title']['comment'] ) .' '. trans('axc.seldac::lang.settings.seo_extension.title.comment');
+				trans( $form->config->tabs['fields']['title']['comment'] ) .' '. trans('axc.axc::lang.settings.seo_extension.title.comment');
 			$form->config->tabs['fields']['title']['attributes']['readonly'] = 'readonly';
 		}
 	});
